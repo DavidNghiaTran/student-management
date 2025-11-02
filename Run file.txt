@@ -1,0 +1,10 @@
+cd "D:\DAI HOC\Code BTL\student-management-fullspec"
+pwd
+
+npm run seed
+npm run dev
+ 
+$env:DB_PATH = "D:\DAI HOC\Code BTL\student-management-fullspec\data\qlsv_node.db"
+npm run dev
+
+SQlite: .\sqlite3.exe "D:\DAI HOC\Code BTL\student-management-fullspec\data\qlsv_node.db"

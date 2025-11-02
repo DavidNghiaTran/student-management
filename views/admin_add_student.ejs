@@ -1,0 +1,15 @@
+<h2>Thêm sinh viên</h2>
+<% if (error) { %><div class="alert"><%= error %></div><% } %>
+<form method="post">
+  <div class="grid-2">
+    <div><label>Mã SV</label><input name="ma_sv" required/></div>
+    <div><label>Họ tên</label><input name="ho_ten" required/></div>
+    <div><label>Ngày sinh</label><input type="date" name="ngay_sinh"/></div>
+    <div><label>Lớp</label><input name="lop"/></div>
+    <div><label>Khoa</label><input name="khoa"/></div>
+    <div><label>Email</label><input type="email" name="email"/></div>
+    <div><label>Địa chỉ</label><input name="location"/></div>
+    <div><label>Mật khẩu (mặc định 12345)</label><input name="password"/></div>
+  </div>
+  <button class="btn">Lưu</button>
+</form>

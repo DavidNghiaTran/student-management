@@ -1,0 +1,29 @@
+<div class="card">
+  <h2>Xin chào, <%= sv ? sv.ho_ten : user.username %></h2>
+  <p>Lớp: <%= sv?.lop || '' %> — Khoa: <%= sv?.khoa || '' %></p>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Thông báo mới</h3>
+    <ul>
+      <% (tb||[]).forEach(t => { %><li><strong><%= t.tieu_de %></strong> — <em><%= t.ngay_gui %></em><br/><div><%= t.noi_dung %></div></li><% }) %>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Điểm tổng kết theo môn</h3>
+    <canvas id="chartTK"></canvas>
+  </div>
+</div>
+
+<script>
+  const labels = <%- labels %>;
+  const data = <%- data %>;
+  if (document.getElementById('chartTK')) {
+    new Chart(document.getElementById('chartTK'), {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'TK', data }] },
+      options: { scales: { y: { beginAtZero: true, max: 10 } } }
+    });
+  }
+</script>

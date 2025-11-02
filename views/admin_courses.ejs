@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h2>Danh sách môn học</h2>
+</div>
+
+<div class="add-form">
+  <form action="/admin/courses/add" method="POST" class="form-inline">
+    <input type="text" name="ma_mh" placeholder="Mã môn" required />
+    <input type="text" name="ten_mh" placeholder="Tên môn học" required />
+    <input type="number" name="so_tin_chi" placeholder="Số tín chỉ" min="1" max="10" required />
+    <button type="submit" class="btn btn-primary">Thêm môn học</button>
+  </form>
+</div>
+
+<% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mã môn</th>
+      <th>Tên môn học</th>
+      <th>Số tín chỉ</th>
+      <th>Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (courses && courses.length > 0) { %>
+      <% courses.forEach(mon => { %>
+        <tr>
+          <td><%= mon.ma_mh %></td>
+          <td><%= mon.ten_mh %></td>
+          <td><%= mon.so_tin_chi %></td>
+          <td>
+            <form action="/admin/courses/delete/<%= mon.ma_mh %>" method="POST" style="display:inline-block">
+              <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    <% } else { %>
+      <tr>
+        <td colspan="4" style="text-align:center;">Chưa có môn học nào</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+

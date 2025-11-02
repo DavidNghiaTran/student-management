@@ -1,0 +1,13 @@
+<h2>Sửa sinh viên <%= s.ma_sv %></h2>
+<% if (error) { %><div class="alert"><%= error %></div><% } %>
+<form method="post">
+  <div class="grid-2">
+    <div><label>Họ tên</label><input name="ho_ten" value="<%= s.ho_ten %>" required/></div>
+    <div><label>Ngày sinh</label><input type="date" name="ngay_sinh" value="<%= s.ngay_sinh || '' %>"/></div>
+    <div><label>Lớp</label><input name="lop" value="<%= s.lop || '' %>"/></div>
+    <div><label>Khoa</label><input name="khoa" value="<%= s.khoa || '' %>"/></div>
+    <div><label>Email</label><input type="email" name="email" value="<%= s.email || '' %>"/></div>
+    <div><label>Địa chỉ</label><input name="location" value="<%= s.location || '' %>"/></div>
+  </div>
+  <button class="btn">Cập nhật</button>
+</form>

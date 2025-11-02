@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h2>Danh sách sinh viên</h2>
+  <div class="actions">
+    <a href="/admin/students/add" class="btn btn-primary">+ Thêm sinh viên</a>
+    <form action="/admin/students/import" method="POST" enctype="multipart/form-data" style="display:inline-block">
+      <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+      <button type="submit" class="btn btn-secondary">Nhập từ Excel/CSV</button>
+    </form>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>MSSV</th>
+      <th>Họ tên</th>
+      <th>Lớp</th>
+      <th>Khoa</th>
+      <th>Email</th>
+      <th>Ngày sinh</th>
+      <th>Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (students && students.length > 0) { %>
+      <% students.forEach(sv => { %>
+        <tr>
+          <td><%= sv.ma_sv %></td>
+          <td><%= sv.ho_ten %></td>
+          <td><%= sv.lop %></td>
+          <td><%= sv.khoa %></td>
+          <td><%= sv.email %></td>
+          <td><%= sv.ngay_sinh || '' %></td>
+          <td>
+            <a href="/admin/students/edit/<%= sv.ma_sv %>" class="btn btn-sm btn-info">Sửa</a>
+            <form action="/admin/students/delete/<%= sv.ma_sv %>" method="POST" style="display:inline-block">
+              <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    <% } else { %>
+      <tr><td colspan="7" style="text-align:center;">Chưa có sinh viên nào</td></tr>
+    <% } %>
+  </tbody>
+</table>

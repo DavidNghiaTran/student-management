@@ -1,0 +1,26 @@
+<h2>GPA theo lớp</h2>
+<form method="get">
+  <select name="lop">
+    <option value="">-- Chọn lớp --</option>
+    <% (lops||[]).forEach(l => { %><option value="<%= l.lop || l %>" <%= (lop||'')==(l.lop||l)?'selected':'' %>><%= l.lop || l %></option><% }) %>
+  </select>
+  <button class="btn">Xem</button>
+</form>
+
+<% if (avg10 !== null) { %>
+  <p><strong>GPA trung bình (10):</strong> <%= avg10 %> — <strong>GPA (4):</strong> <%= avg4 %></p>
+<% } %>
+
+<table>
+  <thead><tr><th>Mã SV</th><th>Họ tên</th><th>Lớp</th><th>GPA (10)</th></tr></thead>
+  <tbody>
+    <% (rows||[]).forEach(r => { %>
+      <tr>
+        <td><%= r.ma_sv %></td>
+        <td><%= r.ho_ten %></td>
+        <td><%= r.lop || '' %></td>
+        <td><%= r.gpa10 ?? '' %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

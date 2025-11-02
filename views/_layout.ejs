@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/public/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <h1>Student Management</h1>
+      <% if (user) { %>
+        <nav>
+          <% if (user.vai_tro === 'GIAOVIEN') { %>
+            <a href="/admin">Bảng điều khiển</a>
+            <a href="/admin/students">Sinh viên</a>
+            <a href="/admin/courses">Môn học</a>
+            <a href="/admin/grades">Điểm</a>
+            <a href="/admin/reports">Báo cáo</a>
+            <a href="/admin/notify">Thông báo</a>
+          <% } else { %>
+            <a href="/student">Trang chủ</a>
+            <a href="/student/grades">Bảng điểm</a>
+            <a href="/student/profile">Hồ sơ</a>
+          <% } %>
+          <a class="right" href="/logout">Đăng xuất</a>
+        </nav>
+      <% } %>
+    </div>
+  </header>
+  <main class="container">
+    <%- include(view) %>
+  </main>
+  <footer class="container footer">© <%= new Date().getFullYear() %> Student Management</footer>
+</body>
+</html>

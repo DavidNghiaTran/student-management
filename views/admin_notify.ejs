@@ -1,0 +1,14 @@
+<h2>Gửi thông báo</h2>
+<form method="post">
+  <div class="grid-2">
+    <div><label>Lớp nhận (để trống = tất cả)</label>
+      <select name="lop_nhan">
+        <option value="">Tất cả</option>
+        <% (lops||[]).forEach(l => { %><option value="<%= l.lop || l %>"><%= l.lop || l %></option><% }) %>
+      </select>
+    </div>
+    <div><label>Tiêu đề</label><input name="tieu_de" required/></div>
+    <div style="grid-column:1 / span 2"><label>Nội dung</label><textarea name="noi_dung" rows="6" required></textarea></div>
+  </div>
+  <button class="btn">Gửi</button>
+</form>

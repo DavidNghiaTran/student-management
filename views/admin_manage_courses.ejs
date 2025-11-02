@@ -1,0 +1,19 @@
+<div class="actions">
+  <a class="btn" href="/admin/courses/add">+ Thêm môn học</a>
+</div>
+<table>
+  <thead><tr><th>Mã MH</th><th>Tên môn</th><th>Số TC</th><th></th></tr></thead>
+  <tbody>
+    <% courses.forEach(c => { %>
+      <tr>
+        <td><%= c.ma_mh %></td>
+        <td><%= c.ten_mh %></td>
+        <td><%= c.so_tin_chi %></td>
+        <td class="nowrap">
+          <a class="btn" href="/admin/courses/<%= c.id %>/edit">Sửa</a>
+          <form method="post" action="/admin/courses/<%= c.id %>/delete" style="display:inline"><button class="btn danger">Xoá</button></form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

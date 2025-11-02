@@ -1,0 +1,22 @@
+<h2>Nhập/Sửa điểm lớp <%= lop %> - Môn <%= ma_mh %></h2>
+<form method="post" action="/admin/grades/save">
+  <input type="hidden" name="lop" value="<%= lop %>"/>
+  <input type="hidden" name="ma_mh" value="<%= ma_mh %>"/>
+  <table>
+    <thead><tr><th>Mã SV</th><th>Họ tên</th><th>CC (20%)</th><th>GK (20%)</th><th>CK (60%)</th><th>TK</th><th>Chữ</th></tr></thead>
+    <tbody>
+      <% rows.forEach(r => { %>
+        <tr>
+          <td><%= r.ma_sv %><input type="hidden" name="sv_<%= r.ma_sv %>" value="1"/></td>
+          <td><%= r.ho_ten %></td>
+          <td><input name="cc_<%= r.ma_sv %>" value="<%= r.cc %>" /></td>
+          <td><input name="gk_<%= r.ma_sv %>" value="<%= r.gk %>" /></td>
+          <td><input name="ck_<%= r.ma_sv %>" value="<%= r.ck %>" /></td>
+          <td><%= r.tk ?? '' %></td>
+          <td><%= r.chu ?? '' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <button class="btn">Lưu</button>
+</form>

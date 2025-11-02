@@ -1,0 +1,10 @@
+<h2>Nhập điểm từ Excel</h2>
+<form method="post" enctype="multipart/form-data">
+  <label>Môn học</label>
+  <select name="ma_mh" required>
+    <% mhs.forEach(m => { %><option value="<%= m.ma_mh %>"><%= m.ma_mh %> - <%= m.ten_mh %></option><% }) %>
+  </select>
+  <input type="file" name="file" accept=".xlsx,.xls,.csv" required/>
+  <button class="btn">Tải lên</button>
+</form>
+<p>Chấp nhận các cột: <code>ma_sv</code>/<code>MSSV</code>, <code>diem_chuyen_can</code>/<code>cc</code>, <code>diem_giua_ky</code>/<code>gk</code>, <code>diem_cuoi_ky</code>/<code>ck</code></p>

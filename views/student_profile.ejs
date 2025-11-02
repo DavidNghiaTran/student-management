@@ -1,0 +1,12 @@
+<h2>Hồ sơ cá nhân</h2>
+<% if (msg) { %><div class="alert"><%= msg %></div><% } %>
+<% if (err) { %><div class="alert"><%= err %></div><% } %>
+<form method="post">
+  <div class="grid-2">
+    <div><label>Họ tên</label><input name="ho_ten" value="<%= sv?.ho_ten || '' %>" required/></div>
+    <div><label>Ngày sinh</label><input type="date" name="ngay_sinh" value="<%= sv?.ngay_sinh || '' %>"/></div>
+    <div><label>Email</label><input type="email" name="email" value="<%= sv?.email || '' %>"/></div>
+    <div><label>Địa chỉ</label><input name="location" value="<%= sv?.location || '' %>"/></div>
+  </div>
+  <button class="btn">Lưu</button>
+</form>

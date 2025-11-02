@@ -1,0 +1,35 @@
+<div class="card">
+  <form method="get" class="grid-3">
+    <select name="lop">
+      <option value="">-- Chọn lớp --</option>
+      <% (lops||[]).forEach(l => { %><option value="<%= l.lop || l %>" <%= (lop||'')==(l.lop||l)?'selected':'' %>><%= l.lop || l %></option><% }) %>
+    </select>
+    <select name="ma_mh">
+      <option value="">-- Chọn môn --</option>
+      <% (mhs||[]).forEach(m => { %><option value="<%= m.ma_mh %>" <%= (ma_mh||'')==m.ma_mh?'selected':'' %>><%= m.ma_mh %> - <%= m.ten_mh %></option><% }) %>
+    </select>
+    <button class="btn">Xem</button>
+  </form>
+</div>
+
+<% if ((rows||[]).length) { %>
+  <div class="actions">
+    <a class="btn" href="/admin/grades/enter/<%= encodeURIComponent(lop) %>/<%= encodeURIComponent(ma_mh) %>">Sửa điểm lớp này</a>
+  </div>
+  <table>
+    <thead><tr><th>Mã SV</th><th>Họ tên</th><th>CC</th><th>GK</th><th>CK</th><th>TK</th><th>Chữ</th></tr></thead>
+    <tbody>
+      <% rows.forEach(r => { %>
+        <tr>
+          <td><%= r.ma_sv %></td>
+          <td><%= r.ho_ten %></td>
+          <td><%= r.cc ?? '' %></td>
+          <td><%= r.gk ?? '' %></td>
+          <td><%= r.ck ?? '' %></td>
+          <td><%= r.tk ?? '' %></td>
+          <td><%= r.chu ?? '' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>

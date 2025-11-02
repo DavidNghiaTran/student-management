@@ -1,0 +1,15 @@
+<h2>SV GPA cao (>= 8.0)</h2>
+<table>
+  <thead><tr><th>Mã SV</th><th>Họ tên</th><th>Lớp</th><th>GPA (10)</th><th>GPA (4)</th></tr></thead>
+  <tbody>
+    <% rows.forEach(r => { %>
+      <tr>
+        <td><%= r.ma_sv %></td>
+        <td><%= r.ho_ten %></td>
+        <td><%= r.lop || '' %></td>
+        <td><%= r.gpa10 %></td>
+        <td><%= r.gpa4 %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

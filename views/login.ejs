@@ -1,0 +1,9 @@
+<div class="auth-card">
+  <h2>Đăng nhập</h2>
+  <% if (error) { %><div class="alert"><%= error %></div><% } %>
+  <form method="post" action="/login">
+    <label>Tên đăng nhập</label><input name="username" required />
+    <label>Mật khẩu</label><input name="password" type="password" required />
+    <button class="btn">Đăng nhập</button>
+  </form>
+</div>

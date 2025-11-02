@@ -1,0 +1,38 @@
+<div class="card">
+  <form method="get" class="grid-4">
+    <input name="ma_sv" placeholder="Mã SV" value="<%= filters.ma_sv %>"/>
+    <input name="ho_ten" placeholder="Họ tên" value="<%= filters.ho_ten %>"/>
+    <select name="lop">
+      <option value="">-- Lớp --</option>
+      <% lops.forEach(l => { %><option value="<%= l %>" <%= l===filters.lop?'selected':'' %>><%= l %></option><% }) %>
+    </select>
+    <select name="khoa">
+      <option value="">-- Khoa --</option>
+      <% khoas.forEach(k => { %><option value="<%= k %>" <%= k===filters.khoa?'selected':'' %>><%= k %></option><% }) %>
+    </select>
+    <button class="btn">Lọc</button>
+    <a class="btn" href="/admin/students/add">+ Thêm SV</a>
+    <a class="btn" href="/admin/students/import">Nhập Excel</a>
+    <a class="btn" href="/admin/export_students_excel?<%= new URLSearchParams(filters).toString() %>">Xuất Excel</a>
+  </form>
+</div>
+
+<table>
+  <thead><tr><th>Mã SV</th><th>Họ tên</th><th>Lớp</th><th>Khoa</th><th>Email</th><th>Môn đã có điểm</th><th></th></tr></thead>
+  <tbody>
+    <% students.forEach(s => { %>
+      <tr>
+        <td><%= s.ma_sv %></td>
+        <td><%= s.ho_ten %></td>
+        <td><%= s.lop || '' %></td>
+        <td><%= s.khoa || '' %></td>
+        <td><%= s.email || '' %></td>
+        <td><%= s.so_mon || 0 %></td>
+        <td class="nowrap">
+          <a class="btn" href="/admin/students/<%= s.ma_sv %>/edit">Sửa</a>
+          <form method="post" action="/admin/students/<%= s.ma_sv %>/delete" style="display:inline"><button class="btn danger">Xoá</button></form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

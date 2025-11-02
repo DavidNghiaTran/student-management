@@ -1,0 +1,38 @@
+<h2>Bảng điểm</h2>
+<% if (gpa10 !== null) { %>
+  <div class="card">GPA hệ 10: <strong><%= gpa10 %></strong> — GPA hệ 4: <strong><%= gpa4 %></strong></div>
+<% } else { %>
+  <div class="card">Chưa đủ dữ liệu để tính GPA</div>
+<% } %>
+
+<table>
+  <thead><tr><th>Mã MH</th><th>Tên môn</th><th>TC</th><th>CC</th><th>GK</th><th>CK</th><th>TK</th><th>Chữ</th></tr></thead>
+  <tbody>
+    <% (rows||[]).forEach(r => { %>
+      <tr>
+        <td><%= r.ma_mh %></td>
+        <td><%= r.ten_mh %></td>
+        <td><%= r.so_tin_chi %></td>
+        <td><%= r.diem_chuyen_can ?? '' %></td>
+        <td><%= r.diem_giua_ky ?? '' %></td>
+        <td><%= r.diem_cuoi_ky ?? '' %></td>
+        <td><%= r.diem_tong_ket ?? '' %></td>
+        <td><%= r.diem_chu ?? '' %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<div class="card">
+  <h3>Biểu đồ điểm tổng kết</h3>
+  <canvas id="chartSV"></canvas>
+</div>
+<script>
+  const labels = <%- labels %>;
+  const data = <%- data %>;
+  new Chart(document.getElementById('chartSV'), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: 'TK', data }] },
+    options: { scales: { y: { beginAtZero: true, max: 10 } } }
+  });
+</script>

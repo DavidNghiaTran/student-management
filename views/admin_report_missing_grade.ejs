@@ -1,0 +1,21 @@
+<h2>SV thiếu điểm theo môn</h2>
+<form method="get">
+  <select name="ma_mh">
+    <option value="">-- Chọn môn --</option>
+    <% (mhs||[]).forEach(m => { %><option value="<%= m.ma_mh %>" <%= (typeof ma_mh!=='undefined' && ma_mh===m.ma_mh)?'selected':'' %>><%= m.ma_mh %> - <%= m.ten_mh %></option><% }) %>
+  </select>
+  <button class="btn">Xem</button>
+</form>
+
+<table>
+  <thead><tr><th>Mã SV</th><th>Họ tên</th><th>Lớp</th></tr></thead>
+  <tbody>
+    <% (rows||[]).forEach(r => { %>
+      <tr>
+        <td><%= r.ma_sv %></td>
+        <td><%= r.ho_ten %></td>
+        <td><%= r.lop || '' %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
